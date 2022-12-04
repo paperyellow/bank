@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import shop.mtcoding.bank.config.exception.CustomApiException;
 
 @Component
-public class LoginHandler implements AuthenticationSuccessHandler, AuthenticationFailureHandler {
+public class CustomLoginHandler implements AuthenticationSuccessHandler, AuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import shop.mtcoding.bank.config.enums.UserEnum;
-import shop.mtcoding.bank.handler.LoginHandler;
+import shop.mtcoding.bank.handler.CustomLoginHandler;
 
 // SecurityFilterChain
 
@@ -16,7 +16,7 @@ import shop.mtcoding.bank.handler.LoginHandler;
 public class SecurityConfig {
 
     @Autowired
-    private LoginHandler loginHandler;
+    private CustomLoginHandler customLoginHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -40,8 +40,8 @@ public class SecurityConfig {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .loginProcessingUrl("/api/login")
-                .successHandler(loginHandler)
-                .failureHandler(loginHandler);
+                .successHandler(customLoginHandler)
+                .failureHandler(customLoginHandler);
 
         return http.build();
     }
